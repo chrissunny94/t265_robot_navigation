@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="image" default="/camera2/depth/image_rect_raw" />
+  <arg name="camera_info" default="/camera2/depth/camera_info"/>
+  <arg name="camera"  default="/camera2/depth/image_rect_raw"/>
+  <arg name="publish_tf" default="true"/>
+    
+  <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan" output="screen" >
+    <param name="scan_height" value="20"/>
+    <!--<param name="output_frame_id" value="/camera_depth_frame"/> -->
+    <param name="output_frame_id" value="base_link"/>
+    <param name="range_min" value="0.45"/>
+    <remap from="image" to="/camera2/depth/image_rect_raw"/>  
+  </node> 
+</launch>
