@@ -17,7 +17,14 @@ For **keyboard teleop**
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
 ```
 
+For **Gmapping**
+```
+roslaunch doozy_localization gmapping.launch
+```
 
-
+For **Hector slam**
+```
+roslaunch doozy_localization hector_slam.launch
+```
 
 
