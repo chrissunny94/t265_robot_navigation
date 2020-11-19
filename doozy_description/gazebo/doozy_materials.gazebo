@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<robot name="doozy" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Grey" />
+<xacro:property name="wheel_color" value="Gazebo/LightGrey" />
+<xacro:property name="lidar_color" value="Gazebo/Black" />
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+</gazebo>
+
+<gazebo reference="wheel_fr">
+  <material>${wheel_color}</material>
+</gazebo>
+
+<gazebo reference="wheel_fl">
+  <material>${wheel_color}</material>
+</gazebo>
+
+<gazebo reference="wheel_bl">
+  <material>${wheel_color}</material>
+</gazebo>
+
+<gazebo reference="wheel_br">
+  <material>${wheel_color}</material>
+</gazebo>
+
+<gazebo reference="lidar_base">
+  <material>${lidar_color}</material>
+</gazebo>
+
+<gazebo reference="lidar_top">
+  <material>${lidar_color}</material>
+</gazebo>
+
+</robot>

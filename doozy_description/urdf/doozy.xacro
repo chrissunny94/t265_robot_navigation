@@ -1,0 +1,305 @@
+<?xml version="1.0" ?>
+<robot name="doozy" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find doozy_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find doozy_description)/urdf/doozy.trans" />
+
+<xacro:include filename="$(find doozy_description)/gazebo/doozy_materials.gazebo" />
+<xacro:include filename="$(find doozy_description)/gazebo/doozy_physics.gazebo" />
+<xacro:include filename="$(find doozy_description)/gazebo/doozy_plugins.gazebo" />
+
+<xacro:include filename="$(find doozy_description)/urdf/realsense.urdf.xacro" />
+<xacro:include filename="$(find doozy_description)/urdf/tracker.xacro"/>
+
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.000688298297224989 1.5751456391869052e-16 0.10192216934639059"/>
+    <mass value="49.42140174360976"/>
+    <inertia ixx="3.400808" ixy="0.0" ixz="0.001669" iyy="5.304679" iyz="-0.0" izz="8.500348"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="body_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_base">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.4587371248104036e-16 -1.1331032118871395e-15 0.01795399947013171"/>
+    <mass value="0.5925647336360729"/>
+    <inertia ixx="0.000169" ixy="0.0" ixz="0.0" iyy="0.000169" iyz="0.0" izz="0.000185"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.0 -0.252"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/lidar_base.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.0 -0.252"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/lidar_base.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_top">
+  <inertial>
+    <origin rpy="0 0 0" xyz="1.3894406223050308e-16 -1.140032862137677e-15 0.005436661245015573"/>
+    <mass value="0.0881306217923618"/>
+    <inertia ixx="8e-06" ixy="-0.0" ixz="-0.0" iyy="8e-06" iyz="-0.0" izz="1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.0 -0.2915"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/lidar_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.0 -0.2915"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/lidar_top.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- ####### Cylindrical Wheels ######### -->
+
+<!--
+  
+<link name="wheel_fr">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.6231938637645271e-06 -0.03791410954438729 6.6563337141889445e-06"/>
+    <mass value="2.9254253401761314"/>
+    <inertia ixx="0.009698" ixy="-0.0" ixz="0.0" iyy="0.016455" iyz="0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.425 0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_fr.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.425 0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_fr.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fl">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.6273189041293712e-06 0.037914108528931734 6.657952042840587e-06"/>
+    <mass value="2.9254254631047467"/>
+    <inertia ixx="0.009698" ixy="0.0" ixz="0.0" iyy="0.016455" iyz="-0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.425 -0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_fl.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.425 -0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_fl.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_bl">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.3662729291818998e-06 0.03788965045500853 6.656333802451675e-06"/>
+    <mass value="2.925425340175096"/>
+    <inertia ixx="0.009698" ixy="-1e-06" ixz="0.0" iyy="0.016456" iyz="0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.425 -0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_bl.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.425 -0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_bl.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_br">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.3697194627959597e-06 -0.03788965136144423 6.657912586596759e-06"/>
+    <mass value="2.925425404496671"/>
+    <inertia ixx="0.009698" ixy="1e-06" ixz="0.0" iyy="0.016456" iyz="-0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.425 0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_br.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.425 0.426 -0.102"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/wheel_br.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+-->
+
+<!-- ####### Mecanum Wheels ######### -->
+
+<link name="wheel_fr">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 -0.04 0"/>
+    <mass value="2.925425404496671"/>
+    <inertia ixx="0.009698" ixy="-0.0" ixz="0.0" iyy="0.016456" iyz="0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 -0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_2.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 -0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_2.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fl">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0.04 0"/>
+    <mass value="2.925425404496671"/>
+    <inertia ixx="0.009698" ixy="0.0" ixz="0.0" iyy="0.016456" iyz="-0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_1.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_1.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_bl">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 0.04 0"/>
+    <mass value="2.925425404496671"/>
+    <inertia ixx="0.009698" ixy="-1e-06" ixz="0.0" iyy="0.016456" iyz="0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_2.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_2.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_br">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0 -0.04 0"/>
+    <mass value="2.925425404496671"/>
+    <inertia ixx="0.009698" ixy="1e-06" ixz="0.0" iyy="0.016456" iyz="-0.0" izz="0.009697"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 -0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_1.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+    <material name="wheel_color"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 -0.04 0"/>
+    <geometry>
+      <mesh filename="package://doozy_description/meshes/omni_wheel_1.dae" scale="0.8 0.8 0.8"/>
+    </geometry>
+  </collision>
+</link>
+
+<!-- ####### Realsense D435 and T265######### -->
+
+<realsense parent="base_link">
+  <origin xyz="0.5 0 0.2" rpy="0 0 0"/> 
+</realsense>
+
+<xacro:realsense_T265 sensor_name="camera" parent_link="base_link" rate="30.0">
+  <origin rpy="0 0 0" xyz="0.5 0 0.18"/>
+</xacro:realsense_T265>
+
+<!-- ####### Joints ######### -->
+
+<joint name="motor_fr" type="continuous">
+  <origin rpy="0 0 0" xyz="0.425 -0.426 0.102"/>
+  <parent link="base_link"/>
+  <child link="wheel_fr"/>
+  <axis xyz="0.0 0.01 0.0"/>
+</joint>
+
+<joint name="motor_fl" type="continuous">
+  <origin rpy="0 0 0" xyz="0.425 0.426 0.102"/>
+  <parent link="base_link"/>
+  <child link="wheel_fl"/>
+  <axis xyz="0.0 0.01 0.0"/>
+</joint>
+
+<joint name="motor_bl" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.425 0.426 0.102"/>
+  <parent link="base_link"/>
+  <child link="wheel_bl"/>
+  <axis xyz="0.0 0.01 0.0"/>
+</joint>
+
+<joint name="motor_br" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.425 -0.426 0.102"/>
+  <parent link="base_link"/>
+  <child link="wheel_br"/>
+  <axis xyz="0.0 0.01 0.0"/>
+</joint>
+
+<joint name="Rigid9" type="fixed">
+  <origin rpy="0 0 0" xyz="0.50 0.0 0.250"/>
+  <parent link="base_link"/>
+  <child link="lidar_base"/>
+</joint>
+
+<joint name="Rigid10" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.0395"/>
+  <parent link="lidar_base"/>
+  <child link="lidar_top"/>
+</joint>
+
+</robot>
