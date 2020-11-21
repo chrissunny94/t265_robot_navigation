@@ -29,6 +29,17 @@ source devel/setup.bash
 roslaunch occupancy occupancy_live_rviz.launch
 ```
 
+# TO CONVERT DEPTHIMAGE_TO_LASERSCAN 
+
+```
+roslaunch doozy_localization depth_to_laserscan.launch
+```
+
+# TO RUN MOVE_BASE(please save map in maps folder and change map file name in move_base_demo.launch file.....If we are using real robot, then change parameter of robot_base_frame from t265_link to base link)
+
+```
+roslaunch doozy_navigation move_base_demo.launch
+```
 
 
 

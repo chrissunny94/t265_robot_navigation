@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <arg name="scan_topic"  default="/laserscan" />
-  <arg name="base_frame"  default="base_link"/>
-  <arg name="odom_frame"  default="odom"/>
+  <arg name="scan_topic"  default="/scan" />
+  <arg name="base_frame"  default="t265_link"/>
+  <arg name="odom_frame"  default="t265_odom_frame"/>
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
     <param name="base_frame" value="$(arg base_frame)"/>
