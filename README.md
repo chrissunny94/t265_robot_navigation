@@ -25,7 +25,8 @@ source devel/setup.bash
 
 # TO RUN THE OCCUPANCY GRID GENERATOR 
 
-```roslaunch occupancy occupancy_live_rviz.launch
+```
+roslaunch occupancy occupancy_live_rviz.launch
 ```
 
 
