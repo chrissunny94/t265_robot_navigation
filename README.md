@@ -23,19 +23,20 @@ source devel/setup.bash
 ```
 
 
-# TO RUN THE OCCUPANCY GRID GENERATOR 
+To run the **Occupancy Grid Generator**
 
 ```
 roslaunch occupancy occupancy_live_rviz.launch
 ```
 
-# TO CONVERT DEPTHIMAGE_TO_LASERSCAN 
+To run **Depthimage_to_laserscan** 
 
 ```
 roslaunch doozy_localization depth_to_laserscan.launch
 ```
 
-# TO RUN MOVE_BASE(please save map in maps folder and change map file name in move_base_demo.launch file.....If we are using real robot, then change parameter of robot_base_frame from t265_link to base link)
+To run **move_base**
+(please save map in maps folder and change map file name in move_base_demo.launch file.....If we are using real robot, then change parameter of robot_base_frame from t265_link to base link)
 
 ```
 roslaunch doozy_navigation move_base_demo.launch
