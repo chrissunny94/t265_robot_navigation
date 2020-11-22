@@ -51,3 +51,4 @@ If all goes well , you will be able to give a navigation goal via RVIZ by clicki
 
 
 
+![alt text](docs/move_base.gif)
