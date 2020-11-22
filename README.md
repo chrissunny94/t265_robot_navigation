@@ -44,7 +44,14 @@ roslaunch jackal_navigation odom_navigation_demo.launch
 
 
 
-#
+If all goes well , you will be able to give a navigation goal via RVIZ by clicking on *2D nav goal*
+
+
+
+
+
+
+# ALL THE REMAINING IS OPTIONAL 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Launch the following command to spawn robot's urdf in **gazebo** test world with Realsense D435 & Realsense T265 attached to it in front along with a RPLidar in the middle of the robot

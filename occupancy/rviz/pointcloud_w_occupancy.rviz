@@ -13,6 +13,7 @@ Panels:
         - /Map1/Status1
         - /Map1/Position1
         - /Map1/Orientation1
+        - /localCostmap1
       Splitter Ratio: 0.5
     Tree Height: 651
   - Class: rviz/Selection
@@ -251,7 +252,7 @@ Visualization Manager:
       Value: true
     - Alpha: 0.699999988079071
       Class: rviz/Map
-      Color Scheme: map
+      Color Scheme: costmap
       Draw Behind: false
       Enabled: true
       Name: localCostmap
@@ -261,7 +262,7 @@ Visualization Manager:
       Value: true
     - Alpha: 0.699999988079071
       Class: rviz/Map
-      Color Scheme: map
+      Color Scheme: costmap
       Draw Behind: false
       Enabled: true
       Name: globalCostmap
@@ -321,7 +322,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.5258753299713135
+      Distance: 6.959452152252197
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -337,9 +338,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8847957849502563
+      Pitch: 0.7747957110404968
       Target Frame: <Fixed Frame>
-      Yaw: 3.6153969764709473
+      Yaw: 3.390395164489746
     Saved: ~
 Window Geometry:
   Displays:
