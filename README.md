@@ -39,7 +39,7 @@ To run **move_base**
 (please save map in maps folder and change map file name in move_base_demo.launch file.....If we are using real robot, then change parameter of robot_base_frame from t265_link to base link in costmap_common.yaml file)
 
 ```
-roslaunch doozy_navigation move_base_demo.launch
+roslaunch jackal_navigation odom_navigation_demo.launch
 ```
 
 

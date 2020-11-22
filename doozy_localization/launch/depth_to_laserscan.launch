@@ -7,7 +7,7 @@
     
   <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan" output="screen" >
     <param name="scan_height" value="3"/>
-    <param name="output_frame_id" value="/camera_depth_frame"/>
+    <param name="output_frame_id" value="d400_depth_frame"/>
     <param name="range_min" value="0.45"/>
     <param name="range_max" value="5.0"/>
     <remap from="image" to="/d400/depth/image_rect_raw"/>  
