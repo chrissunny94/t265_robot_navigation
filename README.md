@@ -48,7 +48,7 @@ If all goes well , you will be able to give a navigation goal via RVIZ by clicki
 
 
 
-
+[LINK TO YOUTUBE VIDEO](https://www.youtube.com/watch?v=ey9-tw8-N3g)
 
 
 ![alt text](docs/move_base.gif)
