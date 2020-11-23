@@ -11,6 +11,10 @@ sudo apt install ros-melodic-depthimage-to-laserscan
 ```
 
 
+
+
+
+
 Build from source
 
 
@@ -25,6 +29,17 @@ source devel/setup.bash
 ```
 
 
+
+Please set the correct serial numbers of both the Realsense cameras 
+
+It can be adjusted in the *cameras.launch* file
+
+```
+occupancy/launch/cameras.launch
+``` 
+
+PLEASE MAKE SURE YOU HAVE A PROPER RGID SETUP
+
 To run the **Occupancy Grid Generator**
 
 ```
@@ -34,7 +49,7 @@ roslaunch occupancy occupancy_live_rviz.launch
 To run the **Occupancy Grid Generator**(Without RVIZ)
 
 ```
-roslaunch occupancy occupancy_live_rviz.launch
+roslaunch occupancy occupancy_live.launch
 ```
 
 
