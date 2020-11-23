@@ -6,6 +6,8 @@
 
 ```
 sudo apt install python-catkin-tools
+
+sudo apt install ros-melodic-depthimage-to-laserscan
 ```
 
 
@@ -32,7 +34,7 @@ roslaunch occupancy occupancy_live_rviz.launch
 To run **Depthimage_to_laserscan** 
 
 ```
-roslaunch doozy_localization depth_to_laserscan.launch
+roslaunch jackal_localization depth_to_laserscan.launch
 ```
 
 To run **move_base**
