@@ -31,6 +31,15 @@ To run the **Occupancy Grid Generator**
 roslaunch occupancy occupancy_live_rviz.launch
 ```
 
+To run the **Occupancy Grid Generator**(Without RVIZ)
+
+```
+roslaunch occupancy occupancy_live_rviz.launch
+```
+
+
+
+
 To run **Depthimage_to_laserscan** 
 
 ```
