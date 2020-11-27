@@ -34,6 +34,13 @@ source devel/setup.bash
 
 Please set the correct serial numbers of both the Realsense cameras 
 
+
+*Use the following command to see the serial number of your cameras*
+
+```
+rs-enumerate-devices
+```
+
 It can be adjusted in the *cameras.launch* file
 
 ```
