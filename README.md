@@ -2,6 +2,8 @@
 
 
 
+![alt text](docs/mysetup.jpeg)
+
 ## Pre requisites 
 
 ```
@@ -59,7 +61,7 @@ roslaunch occupancy occupancy_live.launch
 
 To run **move_base**
 
-(please save map in maps folder and change map file name in move_base_demo.launch file.....If we are using real robot, then change parameter of robot_base_frame from t265_link to base link in costmap_common.yaml file)
+
 
 ```
 roslaunch jackal_navigation odom_navigation_demo.launch
@@ -75,3 +77,9 @@ If all goes well , you will be able to give a navigation goal via RVIZ by clicki
 
 
 ![alt text](docs/move_base.gif)
+
+
+
+### Some additional INFO
+
+(please save map in maps folder and change map file name in move_base_demo.launch file.....If we are using real robot, then change parameter of robot_base_frame from t265_link to base link in costmap_common.yaml file)
