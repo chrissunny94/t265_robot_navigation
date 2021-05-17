@@ -1,0 +1,23 @@
+<launch>
+    <include file="$(find rur_navigation)/launch/rs_d400_and_t265.launch">
+      <arg name="serial_no_camera1" value="8122110523"/> 			<!-- Note: Replace with actual serial number (camera1 default: t265)-->
+      <arg name="serial_no_camera2" value="817512071164"/> 			<!-- Note: Replace with actual serial number (camera2 default: d400)-->
+    </include>
+    
+
+
+    <arg name="image" default="/d400/depth/image_rect_raw" />
+    <arg name="camera_info" default="/d400/depth/camera_info"/>
+    <arg name="publish_tf" default="true"/>
+
+  <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan" output="screen" >
+    <param name="scan_height" value="3"/>
+    <param name="output_frame_id" value="d400_depth_frame"/>
+    <param name="range_min" value="0.45"/>
+    <param name="range_max" value="5.0"/>
+    <remap from="image" to="/d400/depth/image_rect_raw"/>  
+  </node> 
+
+
+
+</launch>

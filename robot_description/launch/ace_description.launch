@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="use_rviz" default="false"/>
+  <arg name="use_joint_gui" default="false"/>
+  <arg name="use_static_tf" default="false"/>
+  <arg name="use_robot_pub" default="true"/>
+
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find robot_description)/urdf/ace.xacro'"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher"
+      type="joint_state_publisher">
+    <param name="use_gui" value="$(arg use_joint_gui)"/>
+    <rosparam param="source_list">
+      ["ace/joint_states",
+       "ace/front_right/joint_states",
+       "ace/front_left/joint_states",
+       "ace/back_left/joint_states",
+       "ace/back_right/joint_states",
+       "steer_joint_states"]
+    </rosparam>
+      <!-- these are controlled by gazebo now, but TODO(lucasw) need a non-gazebo
+        way to set them also- it could be this rosparam is set elsewhere,
+        or has an if=arg in it. -->
+      <!-- "steered_joint_states"] -->
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+      type="robot_state_publisher"
+      if="$(arg use_robot_pub)"/>
+
+  
+  <node if="$(arg use_static_tf)"
+      pkg="tf" type="static_transform_publisher" name="static_transform_publisher"
+      args="0 0 0.2 0 0 0 map base_link 30"/>
+
+</launch>

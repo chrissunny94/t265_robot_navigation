@@ -1,0 +1,82 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="open_rviz" default="true"/>
+  <arg name="move_forward_only" default="false"/>
+  <arg name="only_t265_camera" default="false"/>
+  <arg name="both_realsense_camera" default="true"/>
+  <arg name="amcl_map_server" default="false"/>  
+  <arg name="gmapping" default="true"/>
+  <arg name="occupancy" default="false"/>
+  <arg name="move_base" default="true"/>
+  <arg name="static_transform" default="true"/>
+  <arg name="lidar" default="false"/>
+  <arg name="urdf" default="false"/>
+ 
+ 
+<group if="$(arg only_t265_camera)"> 
+  <!-- T265  -->
+  <include file="$(find rur_navigation)/launch/rs_t265.launch"/>
+ 
+</group> 
+
+<group if="$(arg both_realsense_camera)"> 
+  <!-- T265 and D435  -->
+  <include file="$(find rur_navigation)/launch/realsensecameras.launch"/>
+ 
+</group> 
+  
+
+<group if="$(arg lidar)"> 
+  <include file="$(find rur_navigation)/launch/rplidar.launch"/>
+</group> 
+
+<group if="$(arg urdf)"> 
+
+<node pkg="tf" type="static_transform_publisher" name="t265_tf_publisher" args="-0.285 0 -0.244 0 0 0  t265_pose_frame base_link   100"/>
+
+  <include file="$(find robot)/launch/urdf_launcher.launch"/>
+  
+</group> 
+
+<group if="$(arg static_transform)"> 
+  <!-- Really Usefull Robot -->
+  <node pkg="tf" type="static_transform_publisher" name="t265_tf_publisher" args="-0.285 0 -0.244 0 0 0  t265_pose_frame base_link   100"/>
+  <node pkg="tf" type="static_transform_publisher" name="lidar_tf_publisher" args="0.190 0.005 0.650 0.001 0 1.5708 1.5708 base_link laser  100"/>
+  
+</group> 
+
+<group if="$(arg amcl_map_server)"> 
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- AMCL -->
+  <include file="$(find rur_navigation)/launch/amcl.launch"/>
+
+</group>
+
+<group if="$(arg gmapping)"> 
+    <include file="$(find rur_navigation)/launch/gmapping.launch"/>
+    
+</group>
+
+
+<group if="$(arg occupancy)"> 
+    <include file="$(find rur_navigation)/launch/occupancy.launch"/>
+    
+</group>
+
+
+
+<group if="$(arg move_base)"> 
+    <include file="$(find rur_navigation)/launch/move_base.launch">
+      <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+    </include>
+</group>
+
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find rur_navigation)/rviz/rur_navigation.rviz"/>
+  </group>
+</launch>

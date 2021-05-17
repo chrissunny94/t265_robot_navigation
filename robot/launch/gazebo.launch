@@ -1,0 +1,38 @@
+<launch>
+  <!-- Load the CougarBot URDF model into the parameter server -->
+  <param name="robot_description" textfile="$(find robot)/urdf/robot.urdf" />
+  <!-- Start Gazebo with an empty world -->
+  <arg name="world_name" default="empty"/> 
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <param name="use_sim_time" value="true"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>  <!-- Spawn a CougarBot in Gazebo, taking the description from the parameter server -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model robot" />
+
+<rosparam file="$(find robot)/config/arm_joint.yaml" command="load"/>
+<rosparam file="$(find robot)/config/finger1_joint.yaml" command="load"/>
+  <rosparam file="$(find robot)/config/finger2_joint.yaml" command="load"/>
+  <rosparam file="$(find robot)/config/mount_arm_joint.yaml" command="load"/>
+  <rosparam file="$(find robot)/config/wrist_arm_joint.yaml" command="load"/>
+  <rosparam file="$(find robot)/config/servo_joint.yaml" command="load"/>
+
+
+
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args=" mount_arm_controller arm_controller finger1_controller finger2_controller wrist_arm_controller servo_joint_controller"/>
+  
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>

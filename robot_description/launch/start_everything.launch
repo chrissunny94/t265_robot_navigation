@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+  
+
+  <include
+   file="$(find ace_description)/launch/ace_description.launch"/>
+	
+   <include
+   file="$(find velodyne_pointcloud)/launch/VLP16_points.launch"/>
+
+    <include
+   file="$(find ace_navigation)/launch/map_server.launch"/>
+  
+	 <include
+   file="$(find ace_navigation)/launch/move_base.launch"/>
+  
+		 <include
+   file="$(find ace_viz)/launch/view_robot.launch"/>
+
+      		 <include
+   file="$(find hdl_localization)/launch/hdl_localization.launch"/>
+
+   		<!-- <include
+   file="$(find xsense_mti_driver)/src/xsens_ros_mti_driver/launch/xsense_mti_node.launch"/>-->
+
+     <include
+   file="$(find svc2_launch)/launch/start_MPC2.launch"/>
+
+<include
+   file="$(find dbc_rosbridge)/launch/dbc_rosbridge.launch"/>
+
+<include
+   file="$(find drivebywire)/launch/drive_bywire.launch"/>
+
+<include
+   file="$(find state_transition)/launch/state_transition.launch"/>
+
+
+
+<node pkg="lane_following_ampc" type="lane_following_ampc_node" respawn="false" name="lane_following_ampc_node" />
+
+
+
+<node pkg="drivebywire" type="vehicle_speed_from_VehicleInfo.py" respawn="false" name="vehicle_speed_from_VehicleInfo.py" />
+<!--
+<node pkg="hmi_rosbridge" type="rostopic_wrapper.py" respawn="false" name="rostopic_wrapper.py" />
+<node pkg="hmi_rosbridge" type="python to_json.py" respawn="false" name="python to_json.py" />
+<node pkg="hmi_rosbridge" type="response.py" respawn="false" name="response.py" />
+-->
+  
+</launch>

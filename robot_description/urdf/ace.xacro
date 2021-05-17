@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot name="ace" xmlns:xacro="http://wiki.ros.org/xacro">
+
+<xacro:property name="car_length" value="2.4"/>
+<xacro:property name="car_width" value=".95"/>
+<xacro:property name="car_height" value=".1"/>
+<xacro:property name="wheel_width" value="0.0889"/>
+<xacro:property name="wheel_radius" value="0.22302"/>
+<xacro:property name="pi" value="3.14"/>
+<!-- TODO(lwalter) pass these in as args -->
+<!-- turning to left -->
+<xacro:property name="min_steer" value="-0.7"/>
+<!-- turning to right -->
+<xacro:property name="max_steer" value="0.7"/>
+
+
+ <link name="base_link">
+    <visual>
+      <origin rpy="1.5708 0 0" xyz="-1.55 -0.45 0.01"/>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001" filename="package://robot_description/meshes/astra/body.stl"/>
+      </geometry>
+      <material name="chassis_mat"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 0" xyz="-1.55 -0.45 0.01"/>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001" filename="package://robot_description/meshes/astra/body.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  
+
+ 
+
+
+
+<link name="imu_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0.0" ixz="0.0" iyy="0" iyz="0.0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_link" />
+  </joint>
+
+  <!-- TODO: Same note as applies to imu_link -->
+  <link name="navsat_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.026" length="0.016" />
+      </geometry>
+      <origin xyz="0 0 0.008" />
+      <material name="black" />
+    </visual>
+  </link>
+  <joint name="navsat_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="navsat_link" />
+    <origin xyz="-0.180 0.126 0.1815" />
+  </joint>
+	
+
+
+  <link name="mynteye_link">
+    <visual>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001"   filename="package://robot_description/meshes/mynt/S.obj"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
+      <material name="black" />
+    </visual>
+  </link>
+  <joint name="mynteye_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="mynteye_link" />
+    <origin xyz="1 0 0.45" rpy="0 0 0"/>
+  </joint>	
+
+
+<link name="velodyne">
+    <visual>
+      <geometry>
+        <mesh scale="0.001 0.001 0.001"   filename="package://robot_description/meshes/mynt/S.obj"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
+      <material name="black" />
+    </visual>
+  </link>
+
+<joint name="velodyne_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="velodyne" />
+    <origin xyz=".5 0 1" rpy="0 0 0"/>
+  </joint>	
+
+
+</robot>

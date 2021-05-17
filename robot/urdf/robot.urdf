@@ -1,0 +1,1388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="robot">
+  <link
+    name="base_link">
+<inertial>
+<mass value="10"/>
+<inertia ixx="0.015" iyy="0.0375" izz="0.0375"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.33392"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/case_rsz.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.33392"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/case_rsz.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="leftwheel">
+<inertial>
+<mass value="1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 3.14" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/wheel_rsz.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <cylinder radius="0.09" length = "0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftwheel_joint"
+    type="continuous">
+    <origin
+        xyz="0.15 0 0.0851"
+        rpy="0 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="leftwheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="rightwheel">
+<inertial>
+<mass value="1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/wheel_rsz.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <cylinder radius="0.09" length = "0.03"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightwheel_joint"
+    type="continuous">
+    <origin
+        xyz="-0.15 0 0.0851"
+        rpy="0 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="rightwheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+ <link
+    name="caster_front">
+<inertial>
+<mass value="0.5"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.06"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/caster.STL"/>
+
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.05 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_front_joint"
+    type="fixed">
+    <origin
+        xyz="0 0.1 0.024"
+        rpy="0 0 1.57" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_front" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+ <link
+    name="caster_right">
+<inertial>
+<mass value="0.8"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.06"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/caster.STL"/>
+
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_right_joint"
+    type="fixed">
+    <origin
+        xyz="0.1 -0.2 0.024"
+        rpy="0 0 1.57" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_right" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+   <link
+    name="caster_left">
+<inertial>
+<mass value="0.8"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.06"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/caster.STL"/>
+
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.025"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="caster_left_joint"
+    type="fixed">
+    <origin
+        xyz="-0.1 -0.2 0.024"
+        rpy="0 0 1.57" />
+    <parent
+      link="base_link" />
+    <child
+      link="caster_left" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <link
+    name="mount">
+<inertial>
+<mass value="0.9"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/mount.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/mount.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mount_joint"
+    type="fixed">
+    <origin
+        xyz="-0.26 -0.3 0.13"
+        rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mount" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="sensor1">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/sensor.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/sensor.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sensor1_joint"
+    type="fixed">
+    <origin
+        xyz="0 0.285 0.244"
+        rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="sensor2">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0 "
+        rpy="0 0 0 " />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/sensor.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/sensor.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sensor2_joint"
+    type="fixed">
+    <origin
+        xyz="0.078 0.265 0.244"
+        rpy="0 0 -0.26" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="sensor3">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="-0.078 0.265 0.244"
+        rpy="0 0 0.26" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/sensor.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.078 0.265 0.244"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/sensor.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sensor3_joint"
+    type="fixed">
+    <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="sensor3" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="main_body">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/body.stl" />
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/body.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="body_joint"
+    type="fixed">
+    <origin
+        xyz="0 0.16 0.6"
+        rpy="0 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="main_body" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="laser_cover">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/laser2.STL" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/laser2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_cover"
+    type="fixed">
+    <origin
+        xyz="0 0.005 -0.015"
+        rpy="1.57 0 -1.57" />
+    <parent
+      link="main_body" />
+    <child
+      link="laser_cover" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+
+  <link
+    name="laser">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/laser.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/laser.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+        xyz="0.01 0.065 0.03"
+        rpy="1.57 1.57 -3.14" />
+    <parent
+      link="laser_cover" />
+    <child
+      link="laser" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="shoulder_arm">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/shoulder.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/shoulder.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_arm_joint"
+    type="fixed">
+    <origin
+        xyz="0 -0.02 0.2"
+        rpy="0 0 0" />
+    <parent
+      link="main_body" />
+    <child
+      link="shoulder_arm" />
+    <limit 
+      lower="-0.78" upper="0.78" effort="0.1" velocity="0.1"/>
+    <dynamics damping="0.5"/>
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="mount_arm">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0.026 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/mount_arm.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.026 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/mount_arm.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mount_arm_joint"
+    type="continuous">
+    <origin
+        xyz="-0.026 0 0"
+        rpy="0 0 0" />
+    <parent
+      link="shoulder_arm" />
+    <child
+      link="mount_arm" />
+
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+<link
+    name="long_label_4">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/label.STL" 
+          scale="1 1 1.1 "/>
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/label.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="long_label_4_joint"
+    type="fixed">
+    <origin
+        xyz="0.005 -0.01 0.155"
+        rpy="1.57 0 -1.57" />
+    <parent
+      link="mount_arm" />
+    <child
+      link="long_label_4" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+<link
+    name="long_label_5">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/label.STL" 
+          scale="1.2 1 0.8 "/>
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/label.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="long_label_5_joint"
+    type="fixed">
+    <origin
+        xyz="0.005 0.035 0.12"
+        rpy="0 0 0" />
+    <parent
+      link="mount_arm" />
+    <child
+      link="long_label_5" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="arm">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0.052 0.07376 -0.124"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/arm.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.052 0.07376 -0.124"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/arm.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_joint"
+    type="continuous">
+    <origin
+        xyz="-0.026 -0.07376 0.124"
+        rpy="0 0 0" />
+    <parent
+      link="mount_arm" />
+    <child
+      link="arm" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+<link
+    name="long_label_6">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/label.STL" 
+          scale="1 1 1.1 "/>
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/label.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="long_label_6_joint"
+    type="fixed">
+    <origin
+        xyz="-0.22 0.08 0.03"
+        rpy="1.57 0 -1.57" />
+    <parent
+      link="arm" />
+    <child
+      link="long_label_6" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+  <link
+    name="wrist_arm">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0.3 0.07376 -0.124"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/wrist.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.3 0.07376 -0.124"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/wrist.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_arm_joint"
+    type="continuous">
+    <origin
+        xyz="-0.25 0 0"
+        rpy="0 0 0" />
+    <parent
+      link="arm" />
+    <child
+      link="wrist_arm" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="long_label_1">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/long_label.STL" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/long_label.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="long_label_1_joint"
+    type="fixed">
+    <origin
+        xyz="-0.1 0.11 0.04"
+        rpy="1.57 0 1.57" />
+    <parent
+      link="wrist_arm" />
+    <child
+      link="long_label_1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+  <link
+    name="long_label_2">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/long_label.STL" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/long_label.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="long_label_2_joint"
+    type="fixed">
+    <origin
+        xyz="-0.06 0.185 0.0"
+        rpy="0 0 0" />
+    <parent
+      link="wrist_arm" />
+    <child
+      link="long_label_2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+<link
+    name="long_label_3">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/long_label.STL" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/long_label.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="long_label_3_joint"
+    type="fixed">
+    <origin
+        xyz="-0.058 0.035 0.005"
+        rpy="0 3.14 3.14" />
+    <parent
+      link="wrist_arm" />
+    <child
+      link="long_label_3" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+<link
+    name="servo">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 -0.02 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/servo.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/servo.stl" />
+      </geometry>
+    </collision>
+  </link>
+<joint
+    name="servo_joint"
+    type="continuous">
+    <origin
+        xyz="-0.2 0.14 0.01"
+        rpy="-1.57 0 1.57" />
+    <parent
+      link="wrist_arm" />
+    <child
+      link="servo" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+     
+  <link
+    name="finger1">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/finger2.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/finger2.stl" />
+      </geometry>
+    </collision>
+  </link>
+<joint
+    name="finger1_joint"
+    type="continuous">
+    <origin
+        xyz="-0.016 0.03 0.015"
+        rpy="0 0 3.14" />
+    <parent
+      link="servo" />
+    <child
+      link="finger1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+     
+  <link
+    name="finger2">
+<inertial>
+<mass value="0.01"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0" />
+      </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/finger2.stl" />
+      </geometry>
+      <material
+        name="White">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/finger2.stl" />
+      </geometry>
+    </collision>
+  </link>
+<joint
+    name="finger2_joint"
+    type="continuous">
+    <origin
+        xyz="0.015 0.03 0.015"
+        rpy="0 0 0" />
+    <parent
+      link="servo" />
+    <child
+      link="finger2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+<!--     
+ <link
+    name="camera_link">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.57 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/astra.dae"
+          scale="0.3 0.3 0.3 " />
+
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.57 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/astra.dae"
+          scale="0.3 0.3 0.3 " />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+        xyz="0 0.27 0.33"
+        rpy="-1.57 0 1.57" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+-->
+ <link
+    name="camera_2">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/T265.STL" />
+
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/T265.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="camera_2_joint"
+    type="fixed">
+    <origin
+        xyz="-0.045 0.27 0.312"
+        rpy="-1.57 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+ <link
+    name="camera_1">
+<inertial>
+<mass value="0.1"/>
+<inertia ixx="0.01" iyy="0.01" izz="0.01"
+ixy="0" ixz="0" iyz="0"/>
+</inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/astra.dae"
+          scale="0.3 0.3 0.3 " />
+
+      </geometry>
+      <material
+        name="Black">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/astra.dae"
+          scale="0.3 0.3 0.3 " />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_1_joint"
+    type="fixed">
+    <origin
+        xyz="0 -0.04 0"
+        rpy="0 0 0" />
+    <parent
+      link="servo" />
+    <child
+      link="camera_1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+
+<!--Gazebo -->
+
+  <gazebo reference="base_link">
+         <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+  <gazebo reference="rightwheel">
+         <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="leftwheel">
+         <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="sensor1">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+  <gazebo reference="sensor2">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+  <gazebo reference="sensor3">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+  <gazebo reference="main_body">
+         <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+  <gazebo reference="laser">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+  <gazebo reference="wrist_arm">
+         <material>Gazebo/Purple</material>
+  </gazebo>
+  <gazebo reference="shoulder_arm">
+         <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="arm">
+         <material>Gazebo/Indigo</material>
+  </gazebo>
+  <gazebo reference="servo">
+         <material>Gazebo/GreenGlow</material>
+  </gazebo>
+ <gazebo reference="finger1">
+         <material>Gazebo/YellowGlow</material>
+  </gazebo>
+   <gazebo reference="finger2">
+         <material>Gazebo/BlueGlow</material>
+  </gazebo>
+
+     <gazebo reference="laser_cover">
+         <material>Gazebo/Purple</material>
+  </gazebo>
+
+     <gazebo reference="long_label_1">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+     <gazebo reference="long_label_2">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+     <gazebo reference="long_label_3">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+     <gazebo reference="long_label_4">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+     <gazebo reference="long_label_5">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo>
+      <gazebo reference="long_label_6">
+         <material>Gazebo/ZincYellow</material>
+  </gazebo> 
+
+</robot>

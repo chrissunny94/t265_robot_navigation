@@ -1,0 +1,9 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50 
+
+mount_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: 
+   - mount_arm_joint
+  pid: {p: 0.5, i: 0, d: 0.0, i_clamp: 10.0}

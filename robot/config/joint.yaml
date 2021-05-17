@@ -1,0 +1,7 @@
+arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - mount_arm_joint
+    - arm_joint
+    - wrist_arm_joint
+    - finger2_joint
